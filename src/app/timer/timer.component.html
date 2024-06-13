@@ -1,0 +1,24 @@
+<div class="flex flex-col justify-center items-center h-screen">
+
+    @if(checkStartTimer){
+      <p class="text-red-900 mb-4">Resisti fino alla fine del timer 🚭</p>
+      <div class="relative w-64 h-16 overflow-hidden rounded-full bg-gray-300 mb-4">
+        <div class="absolute inset-0 bg-red-900"></div>
+        <div class="absolute inset-0 bg-red-500" [style.clip-path]="clipPath" [style.transitionDuration]="durationSeconds"></div>
+      </div>
+    }@else{
+        <p class="text-green-500 mb-4">Adesso puoi fumare 🚬</p>
+        <div class="relative w-64 h-16 overflow-hidden rounded-full bg-green-500 mb-4"></div>
+    }
+  
+    @if(seconds > 0){
+        <p class="text-red-700 mb-4">{{timerText}}</p>  
+    }
+    @else{
+        <p class="text-green-500 mb-4">{{timerText}}</p>  
+     }
+     @if(displayButton){
+        <button class="bg-red-700 text-white p-2 rounded-lg" (click)="startTimer()" >Fuma sigaretta</button>
+     }
+  </div>
+  
