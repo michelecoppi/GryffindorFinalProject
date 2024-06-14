@@ -8,7 +8,11 @@
 </head>
 <body>
     <main>
-       <app-timer></app-timer>
+        @if (checkSleepTime()) {
+            <app-sleep></app-sleep>
+        } @else {
+            <app-timer></app-timer>
+        }
     </main>
 </body>
 </html>

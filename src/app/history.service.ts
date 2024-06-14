@@ -1,32 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Cigarette } from './model/cigarette';
+import { Timer } from './model/timer';
 
-export interface Cigarette{
-  id: number;
-  date: string;
-  time: string;
-  description: string;
-  userId: number;
-}
 
-export interface Timer{
-  id: number;
-  startDate: string;
-  endDate: string;
-  duration: number;
-  userId: number;
-  username: string;
-  firstname: string;
-  lastname: string;
-}
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class HistoryService {
-  private apiUrl: string = 'localhost:8080/planning/users/';
+  private apiUrl: string = 'http://localhost:8080/planning/users/';
 
 
   constructor(private http: HttpClient) {}
@@ -38,5 +23,9 @@ export class HistoryService {
   getLatesTimer(idUser: number): Observable<Timer>{
     return this.http.get<Timer>(`${this.apiUrl}${idUser}/activetimer`);
   }
+
+  
+  
+  
 
 }
