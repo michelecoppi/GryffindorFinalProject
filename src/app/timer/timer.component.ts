@@ -39,7 +39,6 @@ export class TimerComponent {
 
   //per l'id dell'utente ci manca ancora l'autenticazione
   ngOnInit(): void {
-    console.log(this);
     this._checkLatestTimerAndCigarette();
   }
 
@@ -100,11 +99,11 @@ export class TimerComponent {
   private _checkTimerValidation(timer: Timer): void {
     const timerEndDate: Date = new Date(timer.endDate!);
     timerEndDate.setHours(0,0,0,0);
-    console.log(timerEndDate);
+   
 
     const localDate: Date = new Date();
     localDate.setHours(0,0,0,0);
-    console.log(localDate);
+    
 
     if (timerEndDate <= localDate) {
       const newTimer: Timer = {startDate: this._formatDate(localDate), userId: 1};
