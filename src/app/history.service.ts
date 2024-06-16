@@ -20,7 +20,7 @@ export class HistoryService {
     return this.http.get<Cigarette>(`${this.apiUrl}${idUser}/activecigarette`);
   }
 
-  getLatesTimer(idUser: number): Observable<Timer>{
+  getLatestTimer(idUser: number): Observable<Timer>{
     return this.http.get<Timer>(`${this.apiUrl}${idUser}/activetimer`);
   }
 

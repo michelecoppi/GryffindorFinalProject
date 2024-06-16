@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Timer } from '../model/timer';
 import { HistoryService } from '../history.service';
+import { firstValueFrom } from 'rxjs';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-activetimer',
   standalone: true,
-  imports: [],
+  imports: [LoadingComponent],
   templateUrl: './activetimer.component.html',
   styleUrl: './activetimer.component.css'
 })
 export class ActivetimerComponent implements OnInit{
 
   private _timer: Timer = { startDate: "", userId: -1 };
+  private _loading: boolean = true;
   private _formattedDuration: string = "";
+
 
 
  constructor(private hisotryService: HistoryService) { }
@@ -25,22 +29,25 @@ export class ActivetimerComponent implements OnInit{
     return this._formattedDuration;
   }
 
+  public get loading(): boolean {
+    return this._loading;
+  }
 
-  ngOnInit() {
-    this.setActivetimer();
-    console.log(this._timer);
+
+  async ngOnInit(): Promise<void> {
+    await this._setActivetimer();
+    this._loading = false;
 
   }
 
-  setActivetimer() : void{
-    this.hisotryService.getLatesTimer(1).subscribe(timer => {
-      this._timer.id = timer.id;
-      this._timer.durationSeconds = timer.durationSeconds;
-      this._timer.startDate = timer.startDate;
-      this._timer.endDate = timer.endDate;
-      this._timer.userId = timer.userId;
-      this._formattedDuration = this._formatDuration(timer.durationSeconds!);
-      });
+  private async _setActivetimer() : Promise<void>{
+    const timer = await firstValueFrom(this.hisotryService.getLatestTimer(1));
+    this._timer.id = timer.id;
+    this._timer.durationSeconds = timer.durationSeconds;
+    this._timer.startDate = timer.startDate;
+    this._timer.endDate = timer.endDate;
+    this._timer.userId = timer.userId;
+    this._formattedDuration = this._formatDuration(timer.durationSeconds!);
   }
 
   private _formatDuration(durationSeconds: number): string {

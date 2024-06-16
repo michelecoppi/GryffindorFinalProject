@@ -1,5 +1,7 @@
 <div class="flex flex-col justify-center items-center h-screen">
-
+    @if(loading){
+      <app-loading/>
+    }@else{
     @if(checkStartTimer){
       <p class="text-red-900 mb-4">Resisti fino alla fine del timer 🚭</p>
       <div class="relative w-64 h-16 overflow-hidden rounded-full bg-gray-300 mb-4">
@@ -20,5 +22,6 @@
      @if(displayButton){
         <button class="bg-red-700 text-white p-2 rounded-lg" (click)="smokeCigarette()" >Fuma sigaretta</button>
      }
+    }
   </div>
   

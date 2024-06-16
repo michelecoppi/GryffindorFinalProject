@@ -3,16 +3,18 @@ import { HistoryService } from '../history.service';
 import { Cigarette } from '../model/cigarette';
 import { SmokingService } from '../smoking.service';
 import { Timer } from '../model/timer';
+import { LoadingComponent } from '../loading/loading.component';
+import { firstValueFrom } from 'rxjs';
 
 
 @Component({
   selector: 'app-timer',
   standalone: true,
-  imports: [],
+  imports: [LoadingComponent],
   templateUrl: './timer.component.html',
   styleUrl: './timer.component.css'
 })
-export class TimerComponent {
+export class TimerComponent implements OnInit{
 
   private interval: any;
   private _timerText: string;
@@ -26,6 +28,9 @@ export class TimerComponent {
   private _clipPath: string;
   private _displayButton: boolean;
 
+  //LOADING
+  private _loading: boolean;
+
   constructor(private historyService: HistoryService, private smokingService: SmokingService) {
     this._timerText = "";
     this._durationSeconds = 0;
@@ -35,11 +40,13 @@ export class TimerComponent {
     this._checkStartTimer = false;
     this._clipPath = "";
     this._displayButton = true;
+    this._loading = true;
   }
 
   //per l'id dell'utente ci manca ancora l'autenticazione
-  ngOnInit(): void {
-    this._checkLatestTimerAndCigarette();
+  async ngOnInit(): Promise<void> {
+    await this._checkLatestTimerAndCigarette();
+    this._loading = false;
   }
 
   private _startTimer(): void {
@@ -69,45 +76,43 @@ export class TimerComponent {
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
   }
 
-  private _checkLatestTimerAndCigarette(): void {
-    this.historyService.getLatestCigarette(1).subscribe((data) => {
-      this.dateCigarette = data.date;
-      this.timeCigarette = data.time;
+  private async _checkLatestTimerAndCigarette(): Promise<void> {
+    const latestCigarette = await firstValueFrom(this.historyService.getLatestCigarette(1));
+    this.dateCigarette = latestCigarette.date;
+    this.timeCigarette = latestCigarette.time;
 
-      const localDateTime: Date = new Date();
-      const dateTimeCigarette: Date = new Date(`${this.dateCigarette}T${this.timeCigarette}`);
+    const localDateTime: Date = new Date();
+    const dateTimeCigarette: Date = new Date(`${this.dateCigarette}T${this.timeCigarette}`);
 
-      this.historyService.getLatesTimer(1).subscribe((data) => {
-        this._checkTimerValidation(data);
+    const latestTimer = await firstValueFrom(this.historyService.getLatestTimer(1));
+    await this._checkTimerValidation(latestTimer);
 
-        const timeDifferenceSeconds: number = Math.floor((localDateTime.getTime() - dateTimeCigarette.getTime()) / 1000);
+    const timeDifferenceSeconds: number = Math.floor((localDateTime.getTime() - dateTimeCigarette.getTime()) / 1000);
 
-        this.durationSeconds = data.durationSeconds! - timeDifferenceSeconds;
-        if (this.durationSeconds < 0) {
-          this.seconds = 0;
-          this.durationSeconds = 0;
-        } else {
-          this.seconds = this.durationSeconds;
-        }
-
-      })
-
+    this.durationSeconds = latestTimer.durationSeconds! - timeDifferenceSeconds;
+    if (this.durationSeconds < 0) {
+      this.seconds = 0;
+      this.durationSeconds = 0;
+    } else {
+      this.seconds = this.durationSeconds;
+    }
+    if (this.durationSeconds != 0){
       this._startTimer();
-    })
+    }
+    
   }
 
-  private _checkTimerValidation(timer: Timer): void {
+  private async _checkTimerValidation(timer: Timer): Promise<void> {
     const timerEndDate: Date = new Date(timer.endDate!);
-    timerEndDate.setHours(0,0,0,0);
-   
+    timerEndDate.setHours(0, 0, 0, 0);
 
     const localDate: Date = new Date();
-    localDate.setHours(0,0,0,0);
-    
+    localDate.setHours(0, 0, 0, 0);
 
     if (timerEndDate <= localDate) {
-      const newTimer: Timer = {startDate: this._formatDate(localDate), userId: 1};
-      this.smokingService.createTimer(newTimer).subscribe((data) => timer = data);
+      const newTimer: Timer = { startDate: this._formatDate(localDate), userId: 1 };
+      const createdTimer = await firstValueFrom(this.smokingService.createTimer(newTimer));
+      timer = createdTimer;
     }
   }
 
@@ -195,6 +200,9 @@ export class TimerComponent {
   }
   public set displayButton(value: boolean) {
     this._displayButton = value;
+  }
+  public get loading(): boolean {
+    return this._loading;
   }
 
 
