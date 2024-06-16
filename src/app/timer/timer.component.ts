@@ -38,7 +38,7 @@ export class TimerComponent implements OnInit{
     this._dateCigarette = "";
     this._timeCigarette = "";
     this._checkStartTimer = false;
-    this._clipPath = "";
+    this._clipPath = "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)";
     this._displayButton = true;
     this._loading = true;
   }
