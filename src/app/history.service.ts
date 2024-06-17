@@ -23,6 +23,9 @@ export class HistoryService {
   getLatestTimer(idUser: number): Observable<Timer>{
     return this.http.get<Timer>(`${this.apiUrl}${idUser}/activetimer`);
   }
+  getSavingsUntilYesterday(idUser: number): Observable<number>{
+    return this.http.get<number>(`${this.apiUrl}${idUser}/savings`)
+  }
 
   
   

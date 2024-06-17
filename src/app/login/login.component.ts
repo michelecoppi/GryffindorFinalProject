@@ -5,6 +5,8 @@ import { UserService } from '../user.service';
 import { Router, RouterModule } from '@angular/router';
 
 
+
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -14,7 +16,15 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class LoginComponent {
 
+  private _showErrorMessage: boolean = false;
+ 
+ 
+
 constructor(private userService: UserService, private router: Router ){}
+
+public get showErrorMessage(): boolean {
+  return this._showErrorMessage;
+}
 
   onSubmit(form: NgForm): void{
     const login: Login = {
@@ -23,7 +33,13 @@ constructor(private userService: UserService, private router: Router ){}
 
      this.userService.login(login).subscribe({
     next: (resp)=> this.router.navigate(['start']),
-    error: (err) => alert("Username o password non corretti")
+    error: (err) => {
+      this._showErrorMessage=true;
+      setTimeout(()=>{
+        this._showErrorMessage=false;
+      },3000);
+      
+    }
    }); 
   }
 }
