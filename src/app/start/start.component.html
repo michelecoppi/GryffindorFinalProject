@@ -1,0 +1,8 @@
+<main>
+    <app-navigation/>
+    @if (checkSleepTime()) {
+        <app-sleep></app-sleep>
+    } @else {
+        <app-timer></app-timer>
+    }
+</main>

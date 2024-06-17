@@ -5,6 +5,7 @@ import { SmokingService } from '../smoking.service';
 import { Timer } from '../model/timer';
 import { LoadingComponent } from '../loading/loading.component';
 import { firstValueFrom } from 'rxjs';
+import { Utils } from '../utils/utils';
 
 
 @Component({
@@ -55,7 +56,7 @@ export class TimerComponent implements OnInit{
     this.interval = setInterval(() => {
       if (this._seconds > 0) {
         this._seconds--;
-        this.timerText = this._formatDuration(this._seconds);
+        this.timerText = Utils.formatDuration(this._seconds);
 
         const progress = 100 - (this._seconds / this._durationSeconds) * 100;
         this._clipPath = `polygon(0% 0%, ${progress}% 0%, ${progress}% 100%, 0% 100%)`;
@@ -67,13 +68,6 @@ export class TimerComponent implements OnInit{
         clearInterval(this.interval);
       }
     }, 1000);
-  }
-
-  private _formatDuration(durationSeconds: number): string {
-    const hours = Math.floor(durationSeconds / 3600);
-    const minutes = Math.floor(durationSeconds % 3600 / 60);
-    const seconds = durationSeconds % 60;
-    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
   }
 
   private async _checkLatestTimerAndCigarette(): Promise<void> {
@@ -110,7 +104,7 @@ export class TimerComponent implements OnInit{
     localDate.setHours(0, 0, 0, 0);
 
     if (timerEndDate <= localDate) {
-      const newTimer: Timer = { startDate: this._formatDate(localDate), userId: 1 };
+      const newTimer: Timer = { startDate: Utils.formatDate(localDate), userId: 1 };
       const createdTimer = await firstValueFrom(this.smokingService.createTimer(newTimer));
       timer = createdTimer;
     }
@@ -118,33 +112,14 @@ export class TimerComponent implements OnInit{
 
   smokeCigarette(): void {
     const localDateTime: Date = new Date();
-    let localDate: string = this._formatDate(localDateTime);
-    let localTime: string = this._formatTime(localDateTime);
+    let localDate: string = Utils.formatDate(localDateTime);
+    let localTime: string = Utils.formatTime(localDateTime);
     console.log(localDate, localTime);
     //TODO la descrizione dovrà essere inserita dall'utente
     const description: string = "pippo";
     const cigarette: Cigarette = {date: localDate, time: localTime, description: description, userId: 1};
     this.smokingService.createCigarette(cigarette).subscribe(() => this._checkLatestTimerAndCigarette());
   }
-
-  private _formatDate(date: Date): string {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
-
-  private _formatTime(date: Date): string {
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-    return `${hours}:${minutes}:${seconds}`
-  }
-
-  
-
-
-
 
   public get timerText(): string {
     return this._timerText;
