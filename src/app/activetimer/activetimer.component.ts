@@ -43,7 +43,7 @@ export class ActivetimerComponent implements OnInit{
   }
 
   private async _setActivetimer() : Promise<void>{
-    const timer = await firstValueFrom(this.historyService.getLatestTimer(1));
+    const timer = await firstValueFrom(this.historyService.getLatestTimer());
     this._timer.id = timer.id;
     this._timer.durationSeconds = timer.durationSeconds;
     this._timer.startDate = timer.startDate;

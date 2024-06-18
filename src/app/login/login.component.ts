@@ -32,7 +32,10 @@ public get showErrorMessage(): boolean {
     }
 
      this.userService.login(login).subscribe({
-    next: (resp)=> this.router.navigate(['start']),
+    next: (resp)=> {
+      localStorage.setItem('token',resp.token);
+      this.router.navigate(['start']);
+    },
     error: (err) => {
       this._showErrorMessage=true;
       setTimeout(()=>{

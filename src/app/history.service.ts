@@ -16,15 +16,15 @@ export class HistoryService {
 
   constructor(private http: HttpClient) {}
 
-  getLatestCigarette(idUser: number): Observable<Cigarette>{
-    return this.http.get<Cigarette>(`${this.apiUrl}${idUser}/activecigarette`);
+  getLatestCigarette(): Observable<Cigarette>{
+    return this.http.get<Cigarette>(`${this.apiUrl}activecigarette`);
   }
 
-  getLatestTimer(idUser: number): Observable<Timer>{
-    return this.http.get<Timer>(`${this.apiUrl}${idUser}/activetimer`);
+  getLatestTimer(): Observable<Timer>{
+    return this.http.get<Timer>(`${this.apiUrl}activetimer`);
   }
-  getSavingsUntilYesterday(idUser: number): Observable<number>{
-    return this.http.get<number>(`${this.apiUrl}${idUser}/savings`)
+  getSavingsUntilYesterday(): Observable<number>{
+    return this.http.get<number>(`${this.apiUrl}savings`)
   }
 
   

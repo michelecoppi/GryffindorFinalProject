@@ -71,14 +71,14 @@ export class TimerComponent implements OnInit{
   }
 
   private async _checkLatestTimerAndCigarette(): Promise<void> {
-    const latestCigarette = await firstValueFrom(this.historyService.getLatestCigarette(1));
+    const latestCigarette = await firstValueFrom(this.historyService.getLatestCigarette());
     this.dateCigarette = latestCigarette.date;
     this.timeCigarette = latestCigarette.time;
 
     const localDateTime: Date = new Date();
     const dateTimeCigarette: Date = new Date(`${this.dateCigarette}T${this.timeCigarette}`);
 
-    const latestTimer = await firstValueFrom(this.historyService.getLatestTimer(1));
+    const latestTimer = await firstValueFrom(this.historyService.getLatestTimer());
     await this._checkTimerValidation(latestTimer);
 
     const timeDifferenceSeconds: number = Math.floor((localDateTime.getTime() - dateTimeCigarette.getTime()) / 1000);

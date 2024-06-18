@@ -30,7 +30,7 @@ export class SavingsComponent implements OnInit{
   }
 
   private async _setSavings() : Promise<void>{
-    this._savings = await firstValueFrom(this.historyService.getSavingsUntilYesterday(1));
+    this._savings = await firstValueFrom(this.historyService.getSavingsUntilYesterday());
 
   }
 
