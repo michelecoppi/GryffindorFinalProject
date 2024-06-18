@@ -3,5 +3,5 @@ export interface Cigarette {
     date: string;
     time: string;
     description: string;
-    userId: number;
+    userId?: number;
   }

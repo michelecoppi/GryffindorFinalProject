@@ -72,11 +72,14 @@ export class TimerComponent implements OnInit{
 
   private async _checkLatestTimerAndCigarette(): Promise<void> {
     const latestCigarette = await firstValueFrom(this.historyService.getLatestCigarette());
-    this.dateCigarette = latestCigarette.date;
-    this.timeCigarette = latestCigarette.time;
+    let dateTimeCigarette: Date = new Date('1970-01-01');
+    if(latestCigarette !== null){
+      this.dateCigarette = latestCigarette.date;
+      this.timeCigarette = latestCigarette.time;
+      dateTimeCigarette = new Date(`${this.dateCigarette}T${this.timeCigarette}`);
+    }
 
     const localDateTime: Date = new Date();
-    const dateTimeCigarette: Date = new Date(`${this.dateCigarette}T${this.timeCigarette}`);
 
     const latestTimer = await firstValueFrom(this.historyService.getLatestTimer());
     await this._checkTimerValidation(latestTimer);
@@ -93,7 +96,7 @@ export class TimerComponent implements OnInit{
     if (this.durationSeconds != 0){
       this._startTimer();
     }
-    
+ 
   }
 
   private async _checkTimerValidation(timer: Timer): Promise<void> {
@@ -104,7 +107,7 @@ export class TimerComponent implements OnInit{
     localDate.setHours(0, 0, 0, 0);
 
     if (timerEndDate <= localDate) {
-      const newTimer: Timer = { startDate: Utils.formatDate(localDate), userId: 1 };
+      const newTimer: Timer = { startDate: Utils.formatDate(localDate)};
       const createdTimer = await firstValueFrom(this.smokingService.createTimer(newTimer));
       timer = createdTimer;
     }
@@ -114,10 +117,9 @@ export class TimerComponent implements OnInit{
     const localDateTime: Date = new Date();
     let localDate: string = Utils.formatDate(localDateTime);
     let localTime: string = Utils.formatTime(localDateTime);
-    console.log(localDate, localTime);
     //TODO la descrizione dovrà essere inserita dall'utente
     const description: string = "pippo";
-    const cigarette: Cigarette = {date: localDate, time: localTime, description: description, userId: 1};
+    const cigarette: Cigarette = {date: localDate, time: localTime, description: description};
     this.smokingService.createCigarette(cigarette).subscribe(() => this._checkLatestTimerAndCigarette());
   }
 

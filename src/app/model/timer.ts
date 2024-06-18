@@ -3,5 +3,5 @@ export interface Timer{
     startDate: string;
     endDate?: string;
     durationSeconds?: number;
-    userId: number;
+    userId?: number;
   }

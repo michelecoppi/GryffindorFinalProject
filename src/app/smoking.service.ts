@@ -14,10 +14,10 @@ export class SmokingService {
   constructor(private http: HttpClient) { }
 
   createCigarette(cigarette: Cigarette): Observable<Cigarette> {
-    return this.http.post<Cigarette>(`${this.apiUrl}${cigarette.userId}/cigarette`, cigarette);
+    return this.http.post<Cigarette>(`${this.apiUrl}cigarette`, cigarette);
   }
 
   createTimer(timer: Timer): Observable<Timer> {
-    return this.http.post<Timer>(`${this.apiUrl}${timer.userId}/timer`, timer);
+    return this.http.post<Timer>(`${this.apiUrl}timer`, timer);
   }
 }
