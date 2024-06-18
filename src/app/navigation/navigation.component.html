@@ -1,30 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
     <header>
         <nav class="bg-gray-800 p-4">
-            <div class="container mx-auto flex justify-start items-center">
-                <div class="text-white text-lg font-bold">
-                    No Smoke
+            <div class="container ml-4 flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-white text-lg font-bold">
+                        Smoking Quitter
+                    </div>
+                    <ul class="flex space-x-4 ml-8">
+                        <li><a href="start" class="text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="activetimer" class="text-gray-300 hover:text-white">Active Timer</a></li>
+                        <li><a href="savings" class="text-gray-300 hover:text-white">Savings</a></li>
+                    </ul>
                 </div>
-                <ul class="flex space-x-4 ml-8">
-                    <li><a href="start" class="text-gray-300 hover:text-white">Home</a></li>
-                    <li><a href="activetimer" class="text-gray-300 hover:text-white">Active Timer</a></li>
-                    <li><a href="savings" class="text-gray-300 hover:text-white">Savings</a></li>
-                </ul>
+                <div class="relative">
+                    <button class="flex items-center text-gray-300 hover:text-white focus:outline-none" (click)="toggleUserMenu()">
+                        <span class="mr-2">Account</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div  [class.hidden]="!isUserMenuOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
+                        <p  class="block px-4 py-1 text-gray-800 hover:bg-gray-200"><span class="font-bold text-blue-500">Username:</span> {{userInfo.username}}</p>
+                        <p  class="block px-4 py-1 text-gray-800 hover:bg-gray-200"><span class="font-bold text-blue-500">Subscription Date:</span> {{userInfo.subscriptionDate}}</p>
+                        <p  class="block px-4 py-1 text-gray-800 hover:bg-gray-200"><span class="font-bold text-blue-500">Daily Cigarettes:</span> {{userInfo.dailyCigNum}}</p>
+                        <button  class="text-left font-bold w-full px-4 py-2 text-gray-800 hover:bg-red-700 bg-red-500" (click)="logout()">Logout</button>
+                    </div>
+                </div>
             </div>
         </nav>
-
     </header>
     <main></main>
     <footer></footer>
-</body>
-
-</html>
