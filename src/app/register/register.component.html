@@ -1,11 +1,11 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
   
-<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="bg-white p-8 rounded shadow-md w-full max-w-lg">
-    <p class="mb-4 justify-end flex">Are you already registered? <a class="text-blue-600 underline" href="">Sign In</a></p>
-    <p class="text-2xl font-semibold mb-4">Registration</p>
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="bg-yellowdog p-8 rounded shadow-md w-full max-w-lg">
+    <p class="mb-4 justify-end flex text-bluedog">Are you already registered? <a class="text-blue-600 underline" href="">Sign In</a></p>
+    <p class="text-2xl font-semibold mb-4 text-bluedog">Registration</p>
     <div class="mt-10 grid grid-cols-1 gap-y-8">
         <div>
-            <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+            <label for="username" class="block text-sm font-medium leading-6 text-bluedog">Username</label>
             <div class="mt-2">
                 <input type="text" name="username" id="username"
                     class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div>
-            <label for="firstname" class="block text-sm font-medium leading-6 text-gray-900">Firstname</label>
+            <label for="firstname" class="block text-sm font-medium leading-6 text-bluedog">Firstname</label>
             <div class="mt-2">
                 <input type="text" name="firstname" id="firstname"
                     class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div>
-            <label for="lastname" class="block text-sm font-medium leading-6 text-gray-900">Lastname</label>
+            <label for="lastname" class="block text-sm font-medium leading-6 text-bluedog">Lastname</label>
             <div class="mt-2">
                 <input type="text" name="lastname" id="lastname"
                     class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div>
-            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+            <label for="email" class="block text-sm font-medium leading-6 text-bluedog">Email</label>
             <div class="mt-2">
                 <input type="email" name="email" id="email"
                     class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div>
-            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+            <label for="password" class="block text-sm font-medium leading-6 text-bluedog">Password</label>
             <div class="mt-2">
                 <input type="password" name="password" id="password"
                     class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -45,7 +45,7 @@
             </div>
         </div>
         <div>
-            <label for="age" class="block text-sm font-medium leading-6 text-gray-900">Age</label>
+            <label for="age" class="block text-sm font-medium leading-6 text-bluedog">Age</label>
             <div class="mt-2">
                 <input type="number" name="age" id="age"
                     class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -54,38 +54,38 @@
         </div>
 
         <div>
-            <label>Gender</label>
+            <label class="text-bluedog">Gender</label>
             <div class="flex items-center gap-x-3 mt-2">
                 <input id="male" name="gender" type="radio" value="M"
                     class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600" ngModel>
-                <label for="male" class="block text-sm font-medium leading-6 text-gray-900">Male</label>
+                <label for="male" class="block text-sm font-medium leading-6 text-bluedog">Male</label>
             </div>
             <div class="flex items-center gap-x-3 mt-2">
                 <input id="female" name="gender" type="radio" value="F"
                     class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600" ngModel>
-                <label for="female" class="block text-sm font-medium leading-6 text-gray-900">Female</label>
+                <label for="female" class="block text-sm font-medium leading-6 text-bluedog">Female</label>
             </div>
             <div class="flex items-center gap-x-3 mt-2">
                 <input id="other" name="gender" type="radio" value="O"
                     class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600" ngModel>
-                <label for="other" class="block text-sm font-medium leading-6 text-gray-900">Other</label>
+                <label for="other" class="block text-sm font-medium leading-6 text-bluedog">Other</label>
             </div>
         </div>
         <div>
-            <label>Still Smoker</label>
+            <label class="text-bluedog">Still Smoker</label>
             <div class="flex items-center gap-x-3 mt-2">
                 <input id="smoker" name="smokerChecker" type="radio" value="true"
                     class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600" ngModel required="">
-                <label for="smoker" class="block text-sm font-medium leading-6 text-gray-900">Yes</label>
+                <label for="smoker" class="block text-sm font-medium leading-6 text-bluedog">Yes</label>
             </div>
             <div class="flex items-center gap-x-3 mt-2">
                 <input id="nosmoker" name="smokerChecker" type="radio" value="false"
                     class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600" ngModel required="">
-                <label for="nosmoker" class="block text-sm font-medium leading-6 text-gray-900">No</label>
+                <label for="nosmoker" class="block text-sm font-medium leading-6 text-bluedog">No</label>
             </div>
         </div>
         <div>
-            <label for="dailyCigNum" class="block text-sm font-medium leading-6 text-gray-900">How many cigarettes do
+            <label for="dailyCigNum" class="block text-sm font-medium leading-6 text-bluedog">How many cigarettes do
                 you smoke per day?</label>
             <div class="mt-2">
                 <input type="number" min="0" name="dailyCigNum" id="dailyCigNum"
@@ -94,7 +94,7 @@
             </div>
         </div>
         <div>
-            <label for="cigPackPrice" class="block text-sm font-medium leading-6 text-gray-900">How much does a
+            <label for="cigPackPrice" class="block text-sm font-medium leading-6 text-bluedog">How much does a
                 cigarettes pack cost?</label>
             <div class="mt-2">
                 <input type="number" min="0" name="cigPackPrice" id="cigPackPrice"
@@ -105,7 +105,7 @@
     </div>
     <div class="flex justify-center items-center gap-x-3 mt-4">
         <button type="submit"
-            class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Send</button>
+            class="rounded-md bg-bluedog px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-bluedoghover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Send</button>
     </div>
 </form>
 </div>
