@@ -6,7 +6,9 @@ module.exports = {
       colors: {
         yellowdog: '#f6e0b8',
         bluedog: '#445b5c',
-        bluedoghover: '#304040'
+        bluedoghover: '#304040',
+        yellowdogwindow:'#f8e6c6',
+        yellowdoghover:'#faecd4',
       },
     },
   },

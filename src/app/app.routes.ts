@@ -4,13 +4,14 @@ import { ActivetimerComponent } from './activetimer/activetimer.component';
 import { RegisterComponent } from './register/register.component';
 import { StartComponent } from './start/start.component';
 import { SavingsComponent } from './savings/savings.component';
+import { authGuard } from './auth.guard';
 
 
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path:'activetimer', component: ActivetimerComponent},
+    {path:'activetimer', component: ActivetimerComponent, canActivate:[authGuard]},
     {path:'register', component: RegisterComponent},
-    {path:'start', component: StartComponent},
-    {path:'savings', component: SavingsComponent}
+    {path:'start', component: StartComponent, canActivate:[authGuard]},
+    {path:'savings', component: SavingsComponent, canActivate:[authGuard]}
 ];

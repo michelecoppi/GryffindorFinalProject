@@ -1,18 +1,18 @@
 <app-navigation />
 
     @if(loading){
-        <div class="flex flex-col justify-center items-center h-screen">
+        <div class="flex flex-col justify-center items-center bg-yellowdog">
         <app-loading />
         </div>
     }@else{
-    <div class="flex flex-col justify-center items-center">
-        <h1 class="text-blue-500 text-3xl mb-2">How savings are calculated?</h1>
-        <p>
+    <div class="flex flex-col justify-center items-center h-screen bg-yellowdog">
+        <h1 class="text-bluedoghover font-bold text-3xl mb-2">How savings are calculated?</h1>
+        <p class="text-bluedog">
         Savings are calculated from the day after your subscription date to yesterday 23:59 (subscription date and today not included).
         </p>
         <img class="w-80 h-80" src="images/piggybank.gif">
         <div>
-        <p class="text-5xl mt-5">You saved: <span class="text-green-500">{{displayedSavings}}€</span></p>
+        <p class="text-5xl text-bluedog mt-5">You saved: <span class="text-green-500">{{displayedSavings}}€</span></p>
         </div>
     </div>
     }

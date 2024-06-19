@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center items-center h-screen">
+<div class="flex flex-col justify-center items-center h-screen bg-yellowdog">
     @if(loading){
       <app-loading/>
     }@else{
@@ -11,18 +11,18 @@
       </div>
     }@else{
         <img class="w-48 h-48 object-cover mx-auto" src="images/cigarette.gif" alt="Cigarette">
-        <p class="text-green-500 mb-4">Now you can smoke</p>
-        <div class="relative w-64 h-16 overflow-hidden rounded-full bg-green-500 mb-4"></div>
+        <p class="text-bluedog mb-4">Now you can smoke</p>
+        <div class="relative w-64 h-16 overflow-hidden rounded-full bg-bluedoghover mb-4"></div>
     }
   
     @if(seconds > 0){
         <p class="text-red-700 mb-4">{{timerText}}</p>  
     }
     @else{
-        <p class="text-green-500 mb-4">{{timerText}}</p>  
+        <p class="text-bluedog mb-4">{{timerText}}</p>  
      }
      @if(displayButton){
-        <button class="bg-red-700 text-white p-2 rounded-lg transform hover:scale-110" (click)="showForm()" >Smoke cigarette</button>
+        <button class="bg-bluedog text-yellowdog p-2 rounded-lg transform hover:scale-110" (click)="showForm()" >Smoke cigarette</button>
      }
      
     }

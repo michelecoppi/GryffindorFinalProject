@@ -1,29 +1,32 @@
 
     <header>
-        <nav class="bg-gray-800 p-4">
+        <nav class="bg-bluedog p-4">
             <div class="container ml-4 flex justify-between items-center">
                 <div class="flex items-center">
-                    <div class="text-white text-lg font-bold">
+                    <div>
+                    <img src="images/navbarlogo.png" class="w-10 h-8 mr-3">
+                    </div>
+                    <div class="text-yellowdog text-lg font-bold">
                         Smoking Quitter
                     </div>
                     <ul class="flex space-x-4 ml-8">
-                        <li><a href="start" class="text-gray-300 hover:text-white">Home</a></li>
-                        <li><a href="activetimer" class="text-gray-300 hover:text-white">Active Timer</a></li>
-                        <li><a href="savings" class="text-gray-300 hover:text-white">Savings</a></li>
+                        <li><a href="start" class="text-yellowdog hover:text-yellowdoghover">Home</a></li>
+                        <li><a href="activetimer" class="text-yellowdog hover:text-yellowdoghover">Active Timer</a></li>
+                        <li><a href="savings" class="text-yellowdog hover:text-yellowdoghover">Savings</a></li>
                     </ul>
                 </div>
                 <div class="relative">
-                    <button class="flex items-center text-gray-300 hover:text-white focus:outline-none" (click)="toggleUserMenu()">
+                    <button class="flex items-center text-yellowdog hover:text-yellowdoghover focus:outline-none" (click)="toggleUserMenu()">
                         <span class="mr-2">Account</span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg [class.rotate-180]="isUserMenuOpen" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-                    <div  [class.hidden]="!isUserMenuOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
-                        <p  class="block px-4 py-1 text-gray-800 hover:bg-gray-200"><span class="font-bold text-blue-500">Username:</span> {{userInfo.username}}</p>
-                        <p  class="block px-4 py-1 text-gray-800 hover:bg-gray-200"><span class="font-bold text-blue-500">Subscription Date:</span> {{userInfo.subscriptionDate}}</p>
-                        <p  class="block px-4 py-1 text-gray-800 hover:bg-gray-200"><span class="font-bold text-blue-500">Daily Cigarettes:</span> {{userInfo.dailyCigNum}}</p>
-                        <button  class="text-left font-bold w-full px-4 py-2 text-gray-800 hover:bg-red-700 bg-red-500" (click)="logout()">Logout</button>
+                    <div  [class.hidden]="!isUserMenuOpen" class="absolute right-0 mt-2 w-48 bg-yellowdog rounded-md shadow-lg">
+                        <p  class="block px-4 py-1 text-bluedog hover:bg-yellowdogwindow"><span class="font-bold text-bluedoghover">Username:</span> {{userInfo.username}}</p>
+                        <p  class="block px-4 py-1 text-bluedog hover:bg-yellowdogwindow"><span class="font-bold text-bluedoghover">Subscription Date:</span> {{userInfo.subscriptionDate}}</p>
+                        <p  class="block px-4 py-1 text-bluedog hover:bg-yellowdogwindow"><span class="font-bold text-bluedoghover">Daily Cigarettes:</span> {{userInfo.dailyCigNum}}</p>
+                        <button  class="text-left font-bold w-full px-4 py-2 text-yellowdog hover:bg-bluedoghover bg-bluedog" (click)="logout()">Logout</button>
                     </div>
                 </div>
             </div>

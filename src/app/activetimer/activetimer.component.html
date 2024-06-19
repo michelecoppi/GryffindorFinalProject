@@ -1,21 +1,21 @@
 <app-navigation/>
-<div class="flex justify-center items-center h-screen bg-gray-100">
+<div class="flex justify-center items-center h-screen bg-yellowdog">
   @if(loading){
     <app-loading />
     }@else{
-  <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white relative">
+  <div class="max-w-sm rounded overflow-hidden shadow-lg bg-yellowdogwindow relative">
     <img class="w-32 h-32 object-cover mx-auto" src="images/activetimer.gif" alt="Timer background">
     <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2 text-center text-blue-700">Active Timer</div>
-      <p class="text-gray-700 text-base flex items-center">
+      <div class="font-bold text-xl mb-2 text-center text-bluedoghover">Active Timer</div>
+      <p class="text-bluedog text-base flex items-center">
         <span class="material-icons text-blue-500 mr-2">event</span>
         Start date: {{timer.startDate}}
       </p>
-      <p class="text-gray-700 text-base flex items-center">
+      <p class="text-bluedog text-base flex items-center">
         <span class="material-icons text-red-500 mr-2">event_busy</span>
         End date: {{timer.endDate}}
       </p>
-      <p class="text-gray-700 text-base flex items-center">
+      <p class="text-bluedog text-base flex items-center">
         <span class="material-icons text-green-500 mr-2">schedule</span>
         Duration: {{formattedDuration}}
       </p>
