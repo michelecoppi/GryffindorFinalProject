@@ -11,14 +11,14 @@ export class Utils{
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
         const seconds = String(date.getSeconds()).padStart(2, '0');
-        return `${hours}:${minutes}:${seconds}`
+        return `${hours}:${minutes}:${seconds}`;
       }
 
     public static formatDuration(durationSeconds: number): string {
         const hours = Math.floor(durationSeconds / 3600);
         const minutes = Math.floor(durationSeconds % 3600 / 60);
         const seconds = durationSeconds % 60;
-        return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+        return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
       }
       
       

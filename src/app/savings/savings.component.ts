@@ -24,7 +24,6 @@ export class SavingsComponent implements OnInit{
  async ngOnInit(): Promise<void> {
     await this._setSavings();
     this._animateSavings();
-    console.log(this._savings)
     this._loading = false;
 
   }
@@ -35,8 +34,8 @@ export class SavingsComponent implements OnInit{
   }
 
   private _animateSavings() {
-    const duration = 2000; // Durata totale dell'animazione in millisecondi
-    const frameDuration = 1000 / 60; // Durata di un frame (60fps)
+    const duration = 2000;
+    const frameDuration = 1000 / 60; 
     const totalFrames = duration / frameDuration;
     const increment = this.savings / totalFrames;
     

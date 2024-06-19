@@ -16,7 +16,7 @@ export class StartComponent {
     const minDateTime: Date = new Date();
     minDateTime.setHours(0,0,0,0);
     const maxDateTime: Date = new Date();
-    maxDateTime.setHours(8,0,0,0);//TODO rimetti le otto di mattina
+    maxDateTime.setHours(7,30,0,0);
     if(localDateTime >= minDateTime && localDateTime <= maxDateTime) {
       return true;
     } else {
