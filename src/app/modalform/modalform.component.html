@@ -1,0 +1,17 @@
+<div class="bg-yellowdog">
+<h2 class="text-bluedog text-xl font-bold text-center mt-2" >Why are you smoking the cigarette?</h2>
+<mat-dialog-content>
+  <form>
+    <mat-form-field>
+      <textarea matInput class="placeholder-bluedog" placeholder="Description" [(ngModel)]="description"  [ngModelOptions]="{ standalone: true }"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+   
+  <button class="rounded-md bg-bluedog px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-bluedoghover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mr-5"  (click)="onCancel()">Cancel</button>
+  <button class="rounded-md bg-bluedog px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-bluedoghover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 " (click)="onSubmit()">Send</button>
+
+</mat-dialog-actions>
+</div>
+

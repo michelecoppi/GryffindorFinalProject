@@ -6,12 +6,15 @@ import { Timer } from '../model/timer';
 import { LoadingComponent } from '../loading/loading.component';
 import { firstValueFrom } from 'rxjs';
 import { Utils } from '../utils/utils';
+import { FormComponent } from '../modalform/modalform.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-timer',
   standalone: true,
-  imports: [LoadingComponent],
+  imports: [LoadingComponent, FormComponent, MatDialogModule, MatButtonModule],
   templateUrl: './timer.component.html',
   styleUrl: './timer.component.css'
 })
@@ -32,7 +35,7 @@ export class TimerComponent implements OnInit{
   //LOADING
   private _loading: boolean;
 
-  constructor(private historyService: HistoryService, private smokingService: SmokingService) {
+  constructor(private historyService: HistoryService, private smokingService: SmokingService, private dialog: MatDialog) {
     this._timerText = "";
     this._durationSeconds = 0;
     this._seconds = 0;
@@ -48,6 +51,23 @@ export class TimerComponent implements OnInit{
   async ngOnInit(): Promise<void> {
     await this._checkLatestTimerAndCigarette();
     this._loading = false;
+  }
+
+  public showForm(): void {
+    const dialogRef = this.dialog.open(FormComponent, {
+      width: '300px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== null) {
+        if(result.trim()===''){
+          result = "No description";
+        }
+        console.log(result);
+        this._loading=true;
+        this.smokeCigarette(result);
+      }
+    });
   }
 
   private _startTimer(): void {
@@ -113,14 +133,17 @@ export class TimerComponent implements OnInit{
     }
   }
 
-  smokeCigarette(): void {
+   smokeCigarette(description: string): void {
     const localDateTime: Date = new Date();
     let localDate: string = Utils.formatDate(localDateTime);
     let localTime: string = Utils.formatTime(localDateTime);
     //TODO la descrizione dovrà essere inserita dall'utente
-    const description: string = "pippo";
     const cigarette: Cigarette = {date: localDate, time: localTime, description: description};
-    this.smokingService.createCigarette(cigarette).subscribe(() => this._checkLatestTimerAndCigarette());
+    this.smokingService.createCigarette(cigarette).subscribe(async () => {
+      await this._checkLatestTimerAndCigarette();
+      this._loading=false;
+    });
+
   }
 
   public get timerText(): string {
