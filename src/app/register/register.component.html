@@ -1,14 +1,14 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
   
 <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="bg-yellowdog p-8 rounded shadow-md w-full max-w-lg">
-    <p class="mb-4 justify-end flex text-bluedog">Are you already registered? <a class="text-blue-600 underline" href="">Sign In</a></p>
+    <p class="mb-4 justify-end flex text-bluedog">Are you already registered? <a class="text-bluedoghover underline" href=""> Sign In</a></p>
     <p class="text-2xl font-semibold mb-4 text-bluedog">Registration</p>
     <div class="mt-10 grid grid-cols-1 gap-y-8">
         <div>
             <label for="username" class="block text-sm font-medium leading-6 text-bluedog">Username</label>
             <div class="mt-2">
                 <input type="text" name="username" id="username"
-                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-bluedog sm:text-sm sm:leading-6"
                     ngModel required>
             </div>
         </div>
@@ -16,7 +16,7 @@
             <label for="firstname" class="block text-sm font-medium leading-6 text-bluedog">Firstname</label>
             <div class="mt-2">
                 <input type="text" name="firstname" id="firstname"
-                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-bluedog sm:text-sm sm:leading-6"
                     ngModel required>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <label for="lastname" class="block text-sm font-medium leading-6 text-bluedog">Lastname</label>
             <div class="mt-2">
                 <input type="text" name="lastname" id="lastname"
-                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-bluedog sm:text-sm sm:leading-6"
                     ngModel required>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <label for="email" class="block text-sm font-medium leading-6 text-bluedog">Email</label>
             <div class="mt-2">
                 <input type="email" name="email" id="email"
-                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-bluedog sm:text-sm sm:leading-6"
                     ngModel required>
             </div>
         </div>
@@ -40,7 +40,7 @@
             <label for="password" class="block text-sm font-medium leading-6 text-bluedog">Password</label>
             <div class="mt-2">
                 <input type="password" name="password" id="password"
-                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-bluedog sm:text-sm sm:leading-6"
                     ngModel required>
             </div>
         </div>
@@ -48,7 +48,7 @@
             <label for="age" class="block text-sm font-medium leading-6 text-bluedog">Age</label>
             <div class="mt-2">
                 <input type="number" name="age" id="age"
-                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-bluedog sm:text-sm sm:leading-6"
                     ngModel required>
             </div>
         </div>
@@ -57,17 +57,17 @@
             <label class="text-bluedog">Gender</label>
             <div class="flex items-center gap-x-3 mt-2">
                 <input id="male" name="gender" type="radio" value="M"
-                    class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600" ngModel>
+                    class="h-4 w-4 border-gray-300 text-bluedog focus:ring-bluedog" ngModel>
                 <label for="male" class="block text-sm font-medium leading-6 text-bluedog">Male</label>
             </div>
             <div class="flex items-center gap-x-3 mt-2">
                 <input id="female" name="gender" type="radio" value="F"
-                    class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600" ngModel>
+                    class="h-4 w-4 border-gray-300 text-bluedog focus:ring-bluedog" ngModel>
                 <label for="female" class="block text-sm font-medium leading-6 text-bluedog">Female</label>
             </div>
             <div class="flex items-center gap-x-3 mt-2">
                 <input id="other" name="gender" type="radio" value="O"
-                    class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600" ngModel>
+                    class="h-4 w-4 border-gray-300 text-bluedog focus:ring-bluedog" ngModel>
                 <label for="other" class="block text-sm font-medium leading-6 text-bluedog">Other</label>
             </div>
         </div>
@@ -75,12 +75,12 @@
             <label class="text-bluedog">Still Smoker</label>
             <div class="flex items-center gap-x-3 mt-2">
                 <input id="smoker" name="smokerChecker" type="radio" value="true"
-                    class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600" ngModel required="">
+                    class="h-4 w-4 border-gray-300 text-bluedog focus:ring-bluedog" ngModel required="">
                 <label for="smoker" class="block text-sm font-medium leading-6 text-bluedog">Yes</label>
             </div>
             <div class="flex items-center gap-x-3 mt-2">
                 <input id="nosmoker" name="smokerChecker" type="radio" value="false"
-                    class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600" ngModel required="">
+                    class="h-4 w-4 border-gray-300 text-bluedog focus:ring-bluedog" ngModel required="">
                 <label for="nosmoker" class="block text-sm font-medium leading-6 text-bluedog">No</label>
             </div>
         </div>
@@ -89,7 +89,7 @@
                 you smoke per day?</label>
             <div class="mt-2">
                 <input type="number" min="0" name="dailyCigNum" id="dailyCigNum"
-                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-bluedog sm:text-sm sm:leading-6"
                     ngModel required>
             </div>
         </div>
@@ -98,7 +98,7 @@
                 cigarettes pack cost?</label>
             <div class="mt-2">
                 <input type="number" min="0" name="cigPackPrice" id="cigPackPrice"
-                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 pl-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-bluedog sm:text-sm sm:leading-6"
                     ngModel required>
             </div>
         </div>
